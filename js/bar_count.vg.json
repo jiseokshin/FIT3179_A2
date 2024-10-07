@@ -1,0 +1,25 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": { "text": "Cheapest European Cities" },
+    "data": {
+        "url": "https://raw.githubusercontent.com/jiseokshin/FIT3179_A2/refs/heads/main/data/fatal_shark_attacks_exact_location.csv"
+    },
+    "mark": "bar",
+    "encoding": {
+      "x": { 
+        "aggregate": "count", 
+        "type": "quantitative", 
+        "title": "Number of fatal attacks"
+      },
+      "y": { "field": "state", "type": "nominal" },
+      "color": {
+          "field": "state", 
+          "type": "nominal",
+          "legend": {"title": "State"},
+          "scale": {"scheme": "tableau10"} },
+          "tooltip": [{
+        "aggregate": "count",
+        "type": "quantitative"}]
+            }
+  }
+  
