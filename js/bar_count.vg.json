@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": { "text": "Cheapest European Cities" },
+    "title": { "text": "Fatal shark attacks by state" },
     "data": {
         "url": "https://raw.githubusercontent.com/jiseokshin/FIT3179_A2/refs/heads/main/data/fatal_shark_attacks_exact_location.csv"
     },

@@ -1,0 +1,24 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Sex of the victims of shark attacks",
+    "data": {
+        "url": "https://raw.githubusercontent.com/jiseokshin/FIT3179_A2/refs/heads/main/data/fatal_shark_attacks_exact_location.csv"
+    },
+    "transform": [
+    {
+      "filter": "datum.Sex != ''"
+    }
+  ],
+    "mark": {"type": "arc", "innerRadius": 50},
+    "encoding": {
+    "theta": {"aggregate": "count", "field": "Sex", "type": "quantitative"},
+    "color": {"field": "Sex", "type": "nominal", "scale": {
+        "domain": ["Male", "Female"],
+        "range": ["#0072B2", "#D55E00"]}},
+    "tooltip": [
+      {"field": "Sex", "type": "nominal", "title": "Sex"},
+      {"aggregate": "count", "field": "Sex", "type": "quantitative", "title": "Count"}
+    ]
+    }
+  }
+  
