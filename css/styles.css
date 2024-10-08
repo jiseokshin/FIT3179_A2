@@ -1,0 +1,33 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+header {
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    background-color: white;
+    /* padding: 0; */
+    z-index: 10; /* it's above other content*/
+    border-bottom: 1px solid #ccc; /* To add a separation line */
+
+}
+
+.centered-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0; 
+}
+
+.graph-container {
+    margin-top: 300px; /* Add margin to create space between the title and graph */
+    width: 100%; /* Ensure the graph takes full width below the title */
+    height: auto;
+}
