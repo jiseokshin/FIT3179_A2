@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
@@ -9,6 +10,7 @@
   
   <!-- CSS file -->
   <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   
 </head>
 <body>
@@ -17,21 +19,19 @@
     <header>
       <h1 class="centered-title">Fatal Shark Attacks in Australia</h1>
     </header>
-  
-    <div class="columns">
-    <div class="column">
-      <!-- Left column content -->
-        <div id="symbol_map" class="chart-container"></div>
-        <div id="bar_count" class="chart-container"></div>
-    </div>
-    
-    <div class="column">
-      <!-- Right column content -->
-        <div id="donut" class="chart-container"></div>
-        <div id="treemap" class="chart-container"></div>
-    </div>
+    <div class="row">
+      <div class="column">
+        <!-- Left column content -->
+          <div id="symbol_map" class="chart-container"></div>
+          <div id="bar_count" class="chart-container"></div>
+      </div>
+      
+      <div class="column">
+        <!-- Right column content -->
+          <div id="donut" class="chart-container"></div>
+          <div id="treemap" class="chart-container"></div>
+      </div>
   </div>
-
 
 
   <script>
