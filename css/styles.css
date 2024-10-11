@@ -58,6 +58,7 @@ header {
 .chart-container { 
     display: flex;
     flex-direction: column;
+    justify-content: center;
     /* align-items: center; */
     /* justify-content: center; */
     /* width: 100%;
@@ -66,3 +67,4 @@ header {
     margin: 10px auto;  
      */
 }
+
