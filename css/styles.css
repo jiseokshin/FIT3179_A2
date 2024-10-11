@@ -1,11 +1,10 @@
 body, html {
     margin: 0;
     padding: 0;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    /* width: 100%; */
+    /* height: 100%; */
+    
+    /* overflow-x: hidden; Prevent horizontal scrolling */
 }
 
 header {
@@ -14,44 +13,50 @@ header {
     position: absolute;
     top: 0;
     background-color: white;
-    /* padding: 0; */
-    z-index: 10; /* it's above other content*/
-    border-bottom: 1px solid #ccc; /* To add a separation line */
+    padding: 10px 0;
+    z-index: 10; /* Ensure the header stays on top */
+}
 
+.main-content {
+    width: 100%;
+    /* padding: 20px 0; */
+    /* box-sizing: border-box; */
+    margin-top: 70px; /*Leave space for the fixed header*/
+    display: flex;
+    /* justify-content: center; */
 }
 
 .columns {
     display: flex;
+    flex-wrap: nowrap;
     width: 100%;
-    margin-top: 20px; 
-    justify-content: space-around;
-    align-items: flex-start;
-    gap: 60px; 
+    max-width: 1200px; /* Adjust max-width to your preference */
+    justify-content: space-between;
+    gap: 40px;
+    
 }
 
 .column {
-    flex: 1; /* Each column takes up equal space */
-    padding: 10px;
-    box-sizing: border-box; 
-    max-width: 50%;
+    flex: 1;
+    padding: 50;
+    min-width: 300px;
+    /* box-sizing: border-box; */
 }
-
 
 .centered-title {
-    font-size: 30px;
-    font-weight: bold;
-    font: helvetica;
-    margin: 20px 0; 
-    position: absolute;
-    top: 0; /* Position it at the top of the page */
-    left: 50%; /* Start positioning from the center horizontally */
-    transform: translateX(-50%); /* Shift it left by 50% of its width to truly center */
+    font-size: 28px;
+    margin: 0;
     text-align: center;
-
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    z-index: 5;
 }
 
-.graph-container {
-    margin-top: 300px; /* Add margin to create space between the title and graph */
-    width: 100%; /* Ensure the graph takes full width below the title */
-    height: auto;
+
+.chart-container {
+    width: 100%;
+    max-width: 400px; 
+    height: 200px;
+    /* margin: 10px auto;  */
 }

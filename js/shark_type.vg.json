@@ -1,10 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega/v5.json",
     "title": "A treemap showing the distribution of shark species involved in fatal attacks, including the top 8 species and an 'Other' group.",
-    "width": 960,
-    "height": 500,
-    "padding": 2.5,
-    
+    "width": "container",
     "signals": [
       {
         "name": "layout", "value": "squarify",
