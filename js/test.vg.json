@@ -1,0 +1,35 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Sex of the shark attack victims (Radial Chart)",
+    "data": {
+      "url": "https://raw.githubusercontent.com/jiseokshin/FIT3179_A2/refs/heads/main/data/fatal_shark_attacks_exact_location.csv"
+    },
+    "transform": [
+      {
+        "filter": "datum.Sex != ''"
+      },
+      {
+        "aggregate": [{"op": "count", "field": "Sex", "as": "Count"}],
+        "groupby": ["Sex"]
+      },
+      {
+        "window": [{"op": "rank", "as": "rank"}],
+        "sort": [{"field": "Sex"}]
+      },
+      {
+        "calculate": "datum.rank * (2 * PI) / 2", 
+        "as": "angle"
+      }
+    ],
+    "mark": {"type": "line", "point": true},
+    "encoding": {
+      "theta": {"field": "angle", "type": "quantitative", "stack": false},
+      "radius": {"field": "Count", "type": "quantitative", "scale": {"type": "sqrt"}},
+      "color": {
+        "field": "Sex", 
+        "type": "nominal", 
+        "scale": {"domain": ["Male", "Female"],"range": ["#0072B2", "#D55E00"]}
+      }
+    }
+  }
+  

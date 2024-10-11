@@ -20,6 +20,23 @@ header {
 
 }
 
+.columns {
+    display: flex;
+    width: 100%;
+    margin-top: 20px; 
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 60px; 
+}
+
+.column {
+    flex: 1; /* Each column takes up equal space */
+    padding: 10px;
+    box-sizing: border-box; 
+    max-width: 50%;
+}
+
+
 .centered-title {
     font-size: 30px;
     font-weight: bold;
