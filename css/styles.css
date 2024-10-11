@@ -11,7 +11,7 @@ body, html {
 header {
     width: 100%;
     text-align: center;
-    position: fixed;
+    position: absolute;
     top: 0;
     background-color: white;
     /* padding: 0; */
@@ -21,9 +21,16 @@ header {
 }
 
 .centered-title {
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
+    font: helvetica;
     margin: 20px 0; 
+    position: absolute;
+    top: 0; /* Position it at the top of the page */
+    left: 50%; /* Start positioning from the center horizontally */
+    transform: translateX(-50%); /* Shift it left by 50% of its width to truly center */
+    text-align: center;
+
 }
 
 .graph-container {
