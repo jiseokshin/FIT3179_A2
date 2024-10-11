@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega/v5.json",
-    "title": "Distribution of shark species involved in fatal attacks",
-    "width": 600,
+    "title": "Test of shark species involved in fatal attacks",
+    "width": 400,
     "height": 300,
     "signals": [
       {
