@@ -1,0 +1,141 @@
+{
+    "$schema": "https://vega.github.io/schema/vega/v5.json",
+    "description": "A treemap showing the distribution of shark species involved in fatal attacks, including the top 8 species and an 'Other' group.",
+    "width": 960,
+    "height": 500,
+    "padding": 2.5,
+    "autosize": "none",
+    
+    "signals": [
+      {
+        "name": "layout", "value": "squarify",
+        "bind": {
+          "input": "select",
+          "options": [
+            "squarify",
+            "binary",
+            "slicedice"
+          ]
+        }
+      },
+      {
+        "name": "aspectRatio", "value": 1.6,
+        "bind": {"input": "range", "min": 1, "max": 5, "step": 0.1}
+      }
+    ],
+    
+    "data": [
+      {
+        "name": "table",
+        "url": "https://raw.githubusercontent.com/jiseokshin/FIT3179_A2/refs/heads/main/data/fatal_shark_attacks_exact_location.csv",
+        "format": {"type": "csv"},
+        "transform": [
+          {
+            "type": "filter",
+            "expr": "datum.Species != ''"
+          },
+          {
+            "type": "formula",
+            "as": "NormalizedSpecies",
+            "expr": "test(/bull shark|possibly a bull shark|thought to be a bull shark/i, datum.Species) ? 'Bull Shark' : test(/white shark|great white shark|large white shark/i, datum.Species) ? 'White Shark' : datum.Species"
+          },
+          {
+            "type": "aggregate",
+            "groupby": ["NormalizedSpecies"],
+            "fields": ["NormalizedSpecies"],
+            "ops": ["count"],
+            "as": ["AttackCount"]
+          },
+          {
+            "type": "window",
+            "sort": {"field": "AttackCount", "order": "descending"},
+            "ops": ["rank"],
+            "as": ["rank"]
+          },
+          {
+            "type": "formula",
+            "as": "SpeciesGroup",
+            "expr": "datum.rank <= 8 ? datum.NormalizedSpecies : 'Other'"
+          },
+          {
+            "type": "filter",
+            "expr": "datum.SpeciesGroup == 'Other' || datum.rank <= 8"
+          },
+          {
+            "type": "aggregate",
+            "groupby": ["SpeciesGroup"],
+            "fields": ["AttackCount"],
+            "ops": ["sum"],
+            "as": ["TotalAttacks"]
+          },
+          {
+            "type": "filter",
+            "expr": "datum.TotalAttacks > 0"
+          },
+          {
+            "type": "nest",
+            "keys": ["SpeciesGroup"]
+          },
+          {
+            "type": "treemap",
+            "field": "TotalAttacks",
+            "sort": {"field": "TotalAttacks"},
+            "round": true,
+            "method": {"signal": "layout"},
+            "ratio": {"signal": "aspectRatio"},
+            "size": [{"signal": "width"}, {"signal": "height"}]
+          }
+        ]
+      }
+    ],
+    
+    "scales": [
+      {
+        "name": "color",
+        "type": "ordinal",
+        "domain": {"data": "table", "field": "SpeciesGroup"},
+        "range": [
+          "#3182bd", "#6baed6", "#9ecae1", "#c6dbef", "#e6550d",
+          "#fd8d3c", "#fdae6b", "#fdd0a2", "#31a354", "#74c476",
+          "#a1d99b"
+        ]
+      }
+    ],
+    
+    "marks": [
+      {
+        "type": "rect",
+        "from": {"data": "table"},
+        "encode": {
+          "enter": {
+            "fill": {"scale": "color", "field": "SpeciesGroup"}
+          },
+          "update": {
+            "x": {"field": "x0"},
+            "y": {"field": "y0"},
+            "x2": {"field": "x1"},
+            "y2": {"field": "y1"}
+          }
+        }
+      },
+      {
+        "type": "text",
+        "from": {"data": "table"},
+        "encode": {
+          "enter": {
+            "font": {"value": "Helvetica Neue, Arial"},
+            "align": {"value": "center"},
+            "baseline": {"value": "middle"},
+            "fill": {"value": "#000"},
+            "text": {"field": "SpeciesGroup"},
+            "fontSize": {"value": 14}
+          },
+          "update": {
+            "x": {"signal": "0.5 * (datum.x0 + datum.x1)"},
+            "y": {"signal": "0.5 * (datum.y0 + datum.y1)"}
+          }
+        }
+      }
+    ]
+  }
+  
