@@ -25,11 +25,11 @@
     <div class="column">
       <!-- Left column content -->
       <div id="symbol_map"></div>
+      <div id="bar_count"></div>
     </div>
     
     <div class="column">
       <!-- Right column content -->
-      <div id="bar_count"></div>
       <div id="donut"></div>
       <div id="treemap"></div>
     </div>
@@ -86,7 +86,7 @@
 
 
 <script>
-    var vlSpec = "https://raw.githubusercontent.com/jiseokshin/FIT3179_A2/refs/heads/main/js/sex_donut.vg.json";
+    var vlSpec = "https://raw.githubusercontent.com/jiseokshin/FIT3179_A2/refs/heads/main/js/shark_type.vg.json";
     vegaEmbed('#treemap', vlSpec).then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
