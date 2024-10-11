@@ -107,7 +107,7 @@
         "encode": {
           "enter": {
             "fill": {"scale": "color", "field": "SpeciesGroup"},
-            "tooltip": {"signal": "{'Species': datum.SpeciesGroup, 'Total Attacks': datum.TotalAttacks}"}
+            "tooltip": {"signal": "{'Total Attacks': datum.TotalAttacks}"}
 
           },
           "update": {
