@@ -54,9 +54,8 @@ header {
 }
 
 
-.chart-container {
+/* .chart-container {
     width: 100%;
     max-width: 400px; 
     height: 200px;
     /* margin: 10px auto;  */
-}
