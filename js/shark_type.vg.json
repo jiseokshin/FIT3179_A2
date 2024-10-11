@@ -1,10 +1,9 @@
 {
     "$schema": "https://vega.github.io/schema/vega/v5.json",
-    "description": "A treemap showing the distribution of shark species involved in fatal attacks, including the top 8 species and an 'Other' group.",
+    "title": "A treemap showing the distribution of shark species involved in fatal attacks, including the top 8 species and an 'Other' group.",
     "width": 960,
     "height": 500,
     "padding": 2.5,
-    "autosize": "none",
     
     "signals": [
       {
@@ -37,8 +36,8 @@
           {
             "type": "formula",
             "as": "NormalizedSpecies",
-            "expr": "test(/bull shark|possibly a bull shark|thought to be a bull shark/i, datum.Species) ? 'Bull Shark' : test(/white shark|great white shark|large white shark/i, datum.Species) ? 'White Shark' : datum.Species"
-          },
+            "expr": "test(/bull shark|possibly a bull shark|thought to be a bull shark/i, datum.Species) ? 'Bull Shark' : test(/white shark|great white shark|large white shark|suspected great white shark|thought to be a white shark/i, datum.Species) ? 'White Shark' : test(/tiger shark|3.4 m [11'] tiger shark|2.4 m [8'] tiger shark|suspected tiger shark|thought to be a tiger shark/i, datum.Species) ? 'Tiger Shark' : datum.Species"
+        },
           {
             "type": "aggregate",
             "groupby": ["NormalizedSpecies"],
@@ -55,11 +54,7 @@
           {
             "type": "formula",
             "as": "SpeciesGroup",
-            "expr": "datum.rank <= 8 ? datum.NormalizedSpecies : 'Other'"
-          },
-          {
-            "type": "filter",
-            "expr": "datum.SpeciesGroup == 'Other' || datum.rank <= 8"
+            "expr": "test(/bull shark/i, datum.NormalizedSpecies) ? 'Bull Shark' : test(/white shark/i, datum.NormalizedSpecies) ? 'White Shark' : test(/tiger shark/i, datum.NormalizedSpecies) ? 'Tiger Shark' : test(/grey nurse shark/i, datum.NormalizedSpecies) ? 'Grey Nurse Shark' : 'Other'"
           },
           {
             "type": "aggregate",
@@ -76,6 +71,11 @@
             "type": "nest",
             "keys": ["SpeciesGroup"]
           },
+          {
+            "type": "filter",
+            "expr": "datum.SpeciesGroup !== 'Other' || datum.SpeciesGroup === 'Other'"
+          }
+          ,
           {
             "type": "treemap",
             "field": "TotalAttacks",
@@ -108,7 +108,9 @@
         "from": {"data": "table"},
         "encode": {
           "enter": {
-            "fill": {"scale": "color", "field": "SpeciesGroup"}
+            "fill": {"scale": "color", "field": "SpeciesGroup"},
+            "tooltip": {"signal": "{'Species': datum.SpeciesGroup, 'Total Attacks': datum.TotalAttacks}"}
+
           },
           "update": {
             "x": {"field": "x0"},

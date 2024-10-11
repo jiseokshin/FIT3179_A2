@@ -30,7 +30,8 @@
     <div class="column">
       <!-- Right column content -->
       <div id="bar_count"></div>
-      <div id="sex_donut"></div>
+      <div id="donut"></div>
+      <div id="treemap"></div>
     </div>
   </div>
 
@@ -69,16 +70,28 @@
   </script>
 
 
-  <div id="sex_donut"></div>
+  <div id="donut"></div>
 
 
   <script>
       var vlSpec = "https://raw.githubusercontent.com/jiseokshin/FIT3179_A2/refs/heads/main/js/sex_donut.vg.json";
-      vegaEmbed('#sex_donut', vlSpec).then(function(result) {
+      vegaEmbed('#donut', vlSpec).then(function(result) {
         // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
       }).catch(console.error);
 
   </script>
+
+
+<div id="treemap"></div>
+
+
+<script>
+    var vlSpec = "https://raw.githubusercontent.com/jiseokshin/FIT3179_A2/refs/heads/main/js/sex_donut.vg.json";
+    vegaEmbed('#treemap', vlSpec).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+</script>
 
 
 </body>
