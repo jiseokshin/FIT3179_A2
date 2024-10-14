@@ -1,8 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": "Shark Attacks per state (aggregated every 10 years)",
-    "width": 400,
-    "height": 200,
     "data": {
       "url": "https://raw.githubusercontent.com/jiseokshin/FIT3179_A2/refs/heads/main/data/fatal_shark_attacks_exact_location.csv",
       "format": {"type": "csv"}
