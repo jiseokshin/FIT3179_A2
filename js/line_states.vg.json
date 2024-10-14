@@ -1,0 +1,69 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Shark Attacks per state (aggregated every 10 years)",
+    "width": 600,
+    "height": 400,
+    "data": {
+      "url": "https://raw.githubusercontent.com/jiseokshin/FIT3179_A2/refs/heads/main/data/fatal_shark_attacks_exact_location.csv",
+      "format": {"type": "csv"}
+    },
+    "transform": [
+      {
+        "calculate": "floor(datum.Year / 10) * 10", 
+        "as": "FiveYear"
+      },
+      {
+        "aggregate": [
+          {
+            "op": "count", 
+            "as": "Number of Attacks"
+          }
+        ],
+        "groupby": ["FiveYear", "state"]
+      },
+      {
+        "filter": "state_select == 'All' || datum.state == state_select"
+      }
+    ],
+    "mark": "line",
+    "params": [
+      {
+        "name": "state_select",
+        "value": "All",
+        "bind": {
+            "name": "Selected state",
+          "input": "select",
+          "options": [
+            "All", "New South Wales", "Victoria", "Queensland", 
+            "Tasmania", "South Australia", "Western Australia", 
+            "Northern Territory"
+          ],
+          "labels": ["All", "New South Wales", "Victoria", "Queensland", 
+            "Tasmania", "South Australia", "Western Australia", 
+            "Northern Territory"]
+        }
+      }
+    ],
+    "encoding": {
+      "x": {
+        "field": "FiveYear",
+        "type": "ordinal",
+        "axis": {
+          "labelAngle": 0,
+          "title": "Year (10-year intervals)"
+        }
+      },
+      "y": {
+        "field": "Number of Attacks",
+        "type": "quantitative",
+        "title": "Total Number of Attacks"
+      },
+      "color": {
+        "field": "state",
+        "type": "nominal",
+        "title": "State",
+        "scale": {"scheme": "tableau10"}
+      }
+    }
+  }
+  
