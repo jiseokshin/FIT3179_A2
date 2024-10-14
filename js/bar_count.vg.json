@@ -1,6 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": "Total number of fatal shark attacks by state",
+    "width": 150,
+    "height": 100,
     "data": {
         "url": "https://raw.githubusercontent.com/jiseokshin/FIT3179_A2/refs/heads/main/data/fatal_shark_attacks_exact_location.csv"
     },
@@ -11,7 +13,7 @@
         "type": "quantitative", 
         "title": "Number of fatal attacks"
       },
-      "y": { "field": "state", "type": "nominal" },
+      "y": { "field": "state", "type": "nominal", "title": "State" },
       "color": {
           "field": "state", 
           "type": "nominal",
