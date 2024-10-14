@@ -17,7 +17,7 @@
       "color": {
           "field": "state", 
           "type": "nominal",
-          "legend": {"title": "State"},
+          "legend": null,
           "scale": {"scheme": "tableau10"} },
           "tooltip": [{
         "aggregate": "count",
