@@ -28,6 +28,10 @@ header {
     flex-direction: column;
     display: flex;
 }
+.column:first-child {
+    border-right: 1px solid grey; /* Black line to separate columns */
+    padding-right: 10px; /* Add padding for spacing */
+}
 
 .row {
     display: flex;
