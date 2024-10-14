@@ -62,16 +62,20 @@ header {
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    width: 450px;
 }
 
-.chart-row {
+/* .chart-row {
     display: flex;
     align-items: center;
-}
+} */
 .map-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+    width: 110%;
+}
+
+#symbol_map {
+    width: 130%;
 }
