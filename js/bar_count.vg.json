@@ -1,6 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": "Total number of fatal shark attacks by state",
+    "background":"#FFDBBB",
     "width": 150,
     "height": 100,
     "data": {
