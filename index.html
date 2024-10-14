@@ -26,9 +26,10 @@
           <div id="symbol_map" class="chart-container"></div>
           <p>This is a list of fatal shark attacks in Australia. The Australian Shark-Incident Database has recorded that between 1791 and April 2018 there were 237 fatal shark attacks in Australia.</p>
 
-          <div id="line" class="chart-container"></div>
-
-          <div id="bar_count" class="chart-container"></div>
+          <div class="chart-row">
+            <div id="line" class="chart-container"></div>
+            <div id="bar_count" class="chart-container"></div>
+          </div>
       </div>
 
       <div class="column">
@@ -48,10 +49,11 @@
       // Access the Vega view instance as result.view
     }).catch(console.error);
 
-    var lineSpec = "https://raw.githubusercontent.com/jiseokshin/FIT3179_A2/refs/heads/main/js/symbol_map.vg.json";
-    vegaEmbed('#symbol_map', mapSpec).then(function(result) {
+    var lineSpec = "https://raw.githubusercontent.com/jiseokshin/FIT3179_A2/refs/heads/main/js/line_states.vg.json";
+    vegaEmbed('#line', lineSpec).then(function(result) {
       // Access the Vega view instance as result.view
     }).catch(console.error);
+    
     var barSpec = "https://raw.githubusercontent.com/jiseokshin/FIT3179_A2/refs/heads/main/js/bar_count.vg.json";
     vegaEmbed('#bar_count', barSpec).then(function(result) {
       // Access the Vega view instance as result.view
