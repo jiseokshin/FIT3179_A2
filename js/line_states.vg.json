@@ -10,7 +10,7 @@
     "transform": [
       {
         "calculate": "floor(datum.Year / 10) * 10", 
-        "as": "FiveYear"
+        "as": "tenYear"
       },
       {
         "aggregate": [
@@ -19,7 +19,7 @@
             "as": "Number of Attacks"
           }
         ],
-        "groupby": ["FiveYear", "state"]
+        "groupby": ["tenYear", "state"]
       },
       {
         "filter": "state_select == 'All' || datum.state == state_select"
@@ -46,11 +46,12 @@
     ],
     "encoding": {
       "x": {
-        "field": "FiveYear",
+        "field": "tenYear",
         "type": "ordinal",
         "axis": {
           "labelAngle": 0,
-          "title": "Year (10-year intervals)"
+          "title": "Year (10-year intervals)",
+          "values": [1810, 1830, 1850, 1870, 1890, 1910, 1930, 1950, 1970, 1990, 2010]
         }
       },
       "y": {

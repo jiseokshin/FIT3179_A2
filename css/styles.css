@@ -59,12 +59,14 @@ header {
 
 .chart-container { 
     display: flex;
-    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
-    /* width: 100%; */
     margin: 0 auto;
-    /* margin-top: 30px;   */
-    /* margin-bottom: 30px; */
 }
 
+.chart-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
