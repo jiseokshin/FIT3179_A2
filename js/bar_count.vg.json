@@ -12,7 +12,7 @@
       "x": { 
         "aggregate": "count", 
         "type": "quantitative", 
-        "title": "Number of fatal attacks"
+        "title": "Total fatal attacks"
       },
       "y": { "field": "state", "type": "nominal", "title": "State" },
       "color": {

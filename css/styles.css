@@ -70,6 +70,15 @@ header {
     margin-bottom: 30px;
 }
 
+.indian-label {
+    position: absolute;
+    top: 312px; /* Adjust this based on where the red arrow is */
+    left: 50px; /* Adjust this for horizontal positioning */
+    font-size: 9px;
+    color: #000;
+}
+
 p{
     text-align: center;
 }
+
